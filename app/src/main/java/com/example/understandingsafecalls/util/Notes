@@ -1,0 +1,32 @@
+FOR THE PURPOSE OF THE TUTORIAL LETS BREAK THE ENTIRE STEPS IN STEPS
+
+-- PACKAGE STRUCTURE
+
+-----com.example.undestandingsafecalls
+       |------[data]
+                 |------[remote]
+                             |------[api]
+                             |------[dto]
+                             |------[mapper]
+                             |------[util]
+
+                 |---------[repo]
+                               |------[remote]
+
+       |---------[domain]
+                       |------[model]
+                       |------[repo]
+                       |------[useCase]
+
+       |----------[presentation]
+                               |------[shared]
+                               |------[screens]
+                               |------[themes]
+
+   TODO(COMPLETE)
+
+    1. api interface :
+                1. Why wrapping under retrofit2.Response<T>
+
+
+
