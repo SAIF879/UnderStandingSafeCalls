@@ -1,41 +1,43 @@
 package com.example.understandingsafecalls.data.remote.dto
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class PhotoResponse(
-    @SerializedName("total"     ) var total     : Int?            = null,
-    @SerializedName("totalHits" ) var totalHits : Int?            = null,
-    @SerializedName("hits"      ) var hits      : ArrayList<Hits> = arrayListOf()
+    @SerialName("total"     ) var total     : Int?            = null,
+    @SerialName("totalHits" ) var totalHits : Int?            = null,
+    @SerialName("hits"      ) var hits      : ArrayList<Hits> = arrayListOf()
 )
-
+@Serializable
 data class Hits (
 
-    @SerializedName("id"              ) var id              : Int?     = null,
-    @SerializedName("pageURL"         ) var pageURL         : String?  = null,
-    @SerializedName("type"            ) var type            : String?  = null,
-    @SerializedName("tags"            ) var tags            : String?  = null,
-    @SerializedName("previewURL"      ) var previewURL      : String?  = null,
-    @SerializedName("previewWidth"    ) var previewWidth    : Int?     = null,
-    @SerializedName("previewHeight"   ) var previewHeight   : Int?     = null,
-    @SerializedName("webformatURL"    ) var webformatURL    : String?  = null,
-    @SerializedName("webformatWidth"  ) var webformatWidth  : Int?     = null,
-    @SerializedName("webformatHeight" ) var webformatHeight : Int?     = null,
-    @SerializedName("largeImageURL"   ) var largeImageURL   : String?  = null,
-    @SerializedName("imageWidth"      ) var imageWidth      : Int?     = null,
-    @SerializedName("imageHeight"     ) var imageHeight     : Int?     = null,
-    @SerializedName("imageSize"       ) var imageSize       : Int?     = null,
-    @SerializedName("views"           ) var views           : Int?     = null,
-    @SerializedName("downloads"       ) var downloads       : Int?     = null,
-    @SerializedName("collections"     ) var collections     : Int?     = null,
-    @SerializedName("likes"           ) var likes           : Int?     = null,
-    @SerializedName("comments"        ) var comments        : Int?     = null,
-    @SerializedName("user_id"         ) var userId          : Int?     = null,
-    @SerializedName("user"            ) var user            : String?  = null,
-    @SerializedName("userImageURL"    ) var userImageURL    : String?  = null,
-    @SerializedName("noAiTraining"    ) var noAiTraining    : Boolean? = null,
-    @SerializedName("isAiGenerated"   ) var isAiGenerated   : Boolean? = null,
-    @SerializedName("isGRated"        ) var isGRated        : Boolean? = null,
-    @SerializedName("isLowQuality"    ) var isLowQuality    : Int?     = null,
-    @SerializedName("userURL"         ) var userURL         : String?  = null
+    @SerialName("id"              ) var id              : Int?     = null,
+    @SerialName("pageURL"         ) var pageURL         : String?  = null,
+    @SerialName("type"            ) var type            : String?  = null,
+    @SerialName("tags"            ) var tags            : String?  = null,
+    @SerialName("previewURL"      ) var previewURL      : String?  = null,
+    @SerialName("previewWidth"    ) var previewWidth    : Int?     = null,
+    @SerialName("previewHeight"   ) var previewHeight   : Int?     = null,
+    @SerialName("webformatURL"    ) var webformatURL    : String?  = null,
+    @SerialName("webformatWidth"  ) var webformatWidth  : Int?     = null,
+    @SerialName("webformatHeight" ) var webformatHeight : Int?     = null,
+    @SerialName("largeImageURL"   ) var largeImageURL   : String?  = null,
+    @SerialName("imageWidth"      ) var imageWidth      : Int?     = null,
+    @SerialName("imageHeight"     ) var imageHeight     : Int?     = null,
+    @SerialName("imageSize"       ) var imageSize       : Int?     = null,
+    @SerialName("views"           ) var views           : Int?     = null,
+    @SerialName("downloads"       ) var downloads       : Int?     = null,
+    @SerialName("collections"     ) var collections     : Int?     = null,
+    @SerialName("likes"           ) var likes           : Int?     = null,
+    @SerialName("comments"        ) var comments        : Int?     = null,
+    @SerialName("user_id"         ) var userId          : Int?     = null,
+    @SerialName("user"            ) var user            : String?  = null,
+    @SerialName("userImageURL"    ) var userImageURL    : String?  = null,
+    @SerialName("noAiTraining"    ) var noAiTraining    : Boolean? = null,
+    @SerialName("isAiGenerated"   ) var isAiGenerated   : Boolean? = null,
+    @SerialName("isGRated"        ) var isGRated        : Boolean? = null,
+    @SerialName("isLowQuality"    ) var isLowQuality    : Int?     = null,
+    @SerialName("userURL"         ) var userURL         : String?  = null
 
 )
