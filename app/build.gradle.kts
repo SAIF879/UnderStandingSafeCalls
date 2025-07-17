@@ -1,7 +1,18 @@
+
+import org.jetbrains.kotlin.konan.properties.Properties
+import java.io.FileInputStream
+
+val properties = Properties().apply {
+    load(FileInputStream(rootProject.file("local.properties")))
+}
+
+
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -16,7 +27,12 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "API_KEY", "\"${properties["API_KEY"]}\"")
+
     }
+
+
 
     buildTypes {
         release {
@@ -36,6 +52,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -72,4 +89,7 @@ dependencies {
         implementation(libs.koin.core)
         implementation(libs.koin.android)
         implementation(libs.koin.compose) // If you're using Jetpack Compose
+        //KotlinXSerialization
+         implementation(libs.kotlinx.serialization.json)
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
 }

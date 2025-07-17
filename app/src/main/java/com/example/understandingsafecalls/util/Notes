@@ -25,6 +25,60 @@ FOR THE PURPOSE OF THE TUTORIAL LETS BREAK THE ENTIRE STEPS IN STEPS
 
    TODO(COMPLETE)
 
+   Q. Storing Api keys :
+   ->  in local.properties but still chances of getting reverseEngineered , cause it needs
+       to be in your apk to make network calls though will not be pushed to version control
+
+   Q. OkHttp Interceptors uses :
+   Interceptors are a powerful mechanism that can monitor, rewrite, and retry calls.
+   -> Add auth headers
+      Log HTTP data
+      Retry failed requests
+      Handle offline gracefully
+      Customize error responses
+      Modify request/response globally
+
+   Q. what does this ".addConverterFactory(GsonConverterFactory.create())" do ?
+   -> This Retrofit converter that tells Retrofit how to parse JSON into Kotlin/Java objects, and vice versa.
+   ex -> {
+           "total": 100,
+           "hits": [...]
+         }
+         Retrofit uses GsonConverterFactory to convert it into:
+                                                   data class PhotoResponse(val total: Int, val hits: List<Photo>)
+         Without it, Retrofit won’t know how to parse the response.
+
+   Q. What Is JSON Serialization?
+   -> It means: Deserialization = Convert JSON ➝ Kotlin data class & Serialization = Convert Kotlin data class ➝ JSON
+
+   Q.What are the ways/tools of JSON Serialization?
+   -> 1.Gson : GsonConverterFactory.create() -> Not fully Kotlin-friendly (nullability, default params can break)
+      2.Moshi :MoshiConverterFactory.create() -> Slightly more boilerplate than Gson, Works better with Kotlin's nullability and data classes
+      3.kotlinx.serialization  :KotlinxSerializationConverterFactory.create() ->Best Kotlin support , Requires annotation @Serializable on every data class
+
+   Q.what is That Json { ... } block?
+   -> That Json { ... } block is a Kotlinx Serialization Json configuration. It allows you to tweak how JSON is parsed and encoded
+      1.[ignoreUnknownKeys] = true : If the incoming JSON contains extra keys that are not present in your Kotlin data class, they will be ignored instead of throwing an exception.
+        🔴 Without ignoreUnknownKeys = true → ❌ crash: unknown field
+        ✅ With it → 🟢 extraField is ignored.
+      2. [prettyPrint] = false
+         ✅ Meaning:
+         Controls whether the JSON output should be pretty-printed (indented with newlines and spaces).
+         [true] → nice for debugging / readable JSON
+         [false] → compact JSON (better for performance & networking)
+      3.[isLenient] = true ->  Allows parsing relaxed JSON formats:
+         ex ->
+            [goodJsonFormat] -> { "name": "Saif" }
+            [badJsonFormat] -> { 'name': 'Saif', }
+         With isLenient = true, Kotlinx Serialization becomes more forgiving,
+         and will accept slightly broken or non-standard JSON,
+
+                 If the backend dev is having a bad day and sends you something like this:
+                [badJsonFormat] :  { 'name': 'Saif', }
+                …and you didn't set isLenient = true, then your app will: Crash with a JsonDecodingException because this is not valid JSON.
+
+
+
     1. api interface :
                 1. Why wrapping under retrofit2.Response<T>
 
